@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Scroll Helper",
+    "description": "A simple helper to quickly scroll to the top or bottom of any webpage. Works on all websites, including modern web apps.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/16.png",
+        "48": "icons/48.png",
+        "128": "icons/128.png"
+    }
+}
