@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scroll Helper</title>
+
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Scroll Helper</h2>
+
+      <!-- Scroll To Text -->
+      <div class="section">
+        <label class="section-header">
+          <div class="radio-group">
+            <input type="radio" name="scrollMode" value="text" checked />
+
+            <span>Scroll To Text</span>
+          </div>
+
+          <span class="tooltip">ⓘ</span>
+        </label>
+
+        <div class="section-content">
+          <label>Top Text</label>
+          <input id="topText" type="text" placeholder="e.g. Introduction" />
+
+          <label>Bottom Text</label>
+          <input id="bottomText" type="text" placeholder="e.g. References" />
+        </div>
+      </div>
+
+      <!-- Percentage -->
+
+      <div class="section">
+        <label class="section-header">
+          <div class="radio-group">
+            <input type="radio" name="scrollMode" value="percent" />
+
+            <span>Scroll To Percentage</span>
+          </div>
+
+          <span class="tooltip" title="Jump to a percentage of the page.">
+            ⓘ
+          </span>
+        </label>
+
+        <div class="section-content">
+          <label>Top %</label>
+          <input
+            id="topPercent"
+            type="number"
+            min="0"
+            max="100"
+            placeholder="25"
+          />
+
+          <label>Bottom %</label>
+          <input
+            id="bottomPercent"
+            type="number"
+            min="0"
+            max="100"
+            placeholder="90"
+          />
+
+          <!-- <button id="savePercent">Save</button> -->
+        </div>
+      </div>
+      <button id="saveText">Save</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
