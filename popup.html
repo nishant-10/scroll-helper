@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +10,22 @@
   <body>
     <div class="container">
       <h2>Scroll Helper</h2>
+      <!-- enable/disable buttons -->
+      <div class="section hide-buttons-section">
+        <div class="toggle-row">
+          <div class="toggle-text">
+            <span class="toggle-title">Hide Floating Buttons</span>
+            <span class="toggle-description">
+              Hide the on-page ↑ and ↓ buttons.
+            </span>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" id="hideButtons" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
       <!-- Scroll To Text -->
       <div class="section">
@@ -20,7 +36,12 @@
             <span>Scroll To Text</span>
           </div>
 
-          <span class="tooltip">ⓘ</span>
+          <span class="tooltip"
+            >ⓘ
+            <span class="tooltip-text">
+              Scrolls to the first element containing the entered text.
+            </span></span
+          >
         </label>
 
         <div class="section-content">
@@ -28,7 +49,7 @@
           <input id="topText" type="text" placeholder="e.g. Introduction" />
 
           <label>Bottom Text</label>
-          <input id="bottomText" type="text" placeholder="e.g. References" />
+          <input id="bottomText" type="text" placeholder="e.g. Contact Us" />
         </div>
       </div>
 
@@ -44,6 +65,9 @@
 
           <span class="tooltip" title="Jump to a percentage of the page.">
             ⓘ
+            <span class="tooltip-text">
+              Scrolls to the specified percentage of the page.
+            </span>
           </span>
         </label>
 

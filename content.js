@@ -7,8 +7,52 @@ bottom_button.textContent = "↓";
 top_button.className = "scroll-helper-button top";
 bottom_button.className = "scroll-helper-button bottom";
 
-document.body.appendChild(top_button);
-document.body.appendChild(bottom_button);
+// Create a host element
+const host = document.createElement("div");
+
+// Attach a Shadow DOM
+const shadow = host.attachShadow({
+  mode: "open",
+});
+
+// Add the host to the page
+document.body.appendChild(host);
+
+// Add buttons inside the Shadow DOM
+shadow.appendChild(top_button);
+shadow.appendChild(bottom_button);
+
+const style = document.createElement("style");
+style.textContent = `
+.scroll-helper-button {
+    position: fixed;
+    right: 20px;
+
+    width: 30px;
+    height: 30px;
+
+    z-index: 2147483647;
+
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+
+    opacity: 0.5;
+
+    cursor: pointer;
+}
+
+.top {
+    bottom: 60px;
+}
+
+.bottom {
+    bottom: 20px;
+}
+`;
+
+shadow.appendChild(style);
 
 // Default to the page itself
 let activeScroller = document.scrollingElement || document.documentElement;
@@ -24,12 +68,11 @@ document.addEventListener(
 
     console.log("Current scroller:", activeScroller);
   },
-  true // Capture phase is important
+  true, // Capture phase is important
 );
 
 function scrollToPercent(percent) {
-  const maxScroll =
-    activeScroller.scrollHeight - activeScroller.clientHeight;
+  const maxScroll = activeScroller.scrollHeight - activeScroller.clientHeight;
 
   activeScroller.scrollTo({
     top: maxScroll * percent,

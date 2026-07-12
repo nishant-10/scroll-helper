@@ -6,6 +6,8 @@ const saveTextButton = document.getElementById("saveText");
 
 const saveTextWarning = document.getElementById("saveTextWarning");
 
+const hideButtonsToggle = document.getElementById("hideButtons");
+
 function updateSections() {
   contents.forEach((content) => {
     content.style.display = "none";
@@ -39,6 +41,7 @@ function getDefaultSettings() {
     mode: "text",
     top: 100,
     bottom: 100,
+    hideButtons: false,
   };
 }
 
@@ -136,7 +139,11 @@ saveTextButton.addEventListener("click", async () => {
   }
   //if all inputs are valid, send data to the chrome tab
   if (inputsAreValid) {
-    await saveAndApplySettings(extensionSettings);
+    const allExtensionSettings = {
+      ...extensionSettings,
+      hideButtons: hideButtonsToggle.checked,
+    };
+    await saveAndApplySettings(allExtensionSettings);
     saveTextWarning.style.display = "none";
   } else {
     //warning UI
