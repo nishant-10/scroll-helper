@@ -31,6 +31,27 @@ function loadSettings() {
   });
 }
 
+function populateUI(settings) {
+  const modeRadio = document.querySelector(
+    `input[name="scrollMode"][value="${settings.mode}"]`,
+  );
+  if (modeRadio) {
+    modeRadio.checked = true;
+  }
+
+  hideButtonsToggle.checked = Boolean(settings.hideButtons);
+
+  if (settings.mode === "text") {
+    document.getElementById("topText").value = settings.top || "";
+    document.getElementById("bottomText").value = settings.bottom || "";
+  } else if (settings.mode === "percent") {
+    document.getElementById("topPercent").value = settings.top || "";
+    document.getElementById("bottomPercent").value = settings.bottom || "";
+  }
+
+  updateSections();
+}
+
 function notifyActiveTab(settings) {
   chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
     chrome.tabs.sendMessage(tab.id, {
@@ -196,4 +217,4 @@ document.querySelectorAll("input").forEach((input) => {
   });
 });
 
-updateSections();
+loadSettings().then(populateUI);
