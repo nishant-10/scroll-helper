@@ -181,10 +181,48 @@ document.addEventListener(
   true, // Capture phase is important
 );
 
-function scrollToPercent(percent) {
-  const maxScroll = activeScroller.scrollHeight - activeScroller.clientHeight;
+function canScroll(element) {
+  return Boolean(element) && element.scrollHeight - element.clientHeight > 1;
+}
 
-  activeScroller.scrollTo({
+// Pick the element to scroll: the one the user last scrolled if it can scroll,
+// else the document, else the tallest scrollable container on the page. This
+// keeps percent (and default) scrolling working even before any scroll event
+// has been observed and on sites that scroll an inner container, not the page.
+function getScrollableElement() {
+  if (canScroll(activeScroller)) {
+    return activeScroller;
+  }
+
+  const docElement = document.scrollingElement || document.documentElement;
+  if (canScroll(docElement)) {
+    return docElement;
+  }
+
+  let best = docElement;
+  let bestOverflow = 0;
+  for (const element of document.querySelectorAll("body *")) {
+    if (!(element instanceof HTMLElement) || !canScroll(element)) {
+      continue;
+    }
+    const overflowY = window.getComputedStyle(element).overflowY;
+    if (overflowY !== "auto" && overflowY !== "scroll" && overflowY !== "overlay") {
+      continue;
+    }
+    const overflow = element.scrollHeight - element.clientHeight;
+    if (overflow > bestOverflow) {
+      best = element;
+      bestOverflow = overflow;
+    }
+  }
+  return best;
+}
+
+function scrollToPercent(percent) {
+  const scroller = getScrollableElement();
+  const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+
+  scroller.scrollTo({
     top: maxScroll * percent,
     behavior: "smooth",
   });

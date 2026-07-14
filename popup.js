@@ -45,8 +45,8 @@ function populateUI(settings) {
     document.getElementById("topText").value = settings.top || "";
     document.getElementById("bottomText").value = settings.bottom || "";
   } else if (settings.mode === "percent") {
-    document.getElementById("topPercent").value = settings.top || "";
-    document.getElementById("bottomPercent").value = settings.bottom || "";
+    document.getElementById("topPercent").value = settings.top ?? "";
+    document.getElementById("bottomPercent").value = settings.bottom ?? "";
   }
 
   updateSections();
@@ -144,10 +144,11 @@ saveTextButton.addEventListener("click", async () => {
       validationError = inputValidation.message;
     }
   } else if (selectedMode === "percent") {
-    const topPercent = Number(document.getElementById("topPercent").value);
-    const bottomPercent = Number(
-      document.getElementById("bottomPercent").value,
-    );
+    const topRaw = document.getElementById("topPercent").value.trim();
+    const bottomRaw = document.getElementById("bottomPercent").value.trim();
+    // Treat empty fields as invalid (Number("") is 0, which would silently pass).
+    const topPercent = topRaw === "" ? NaN : Number(topRaw);
+    const bottomPercent = bottomRaw === "" ? NaN : Number(bottomRaw);
     const inputValidation = isScrollInputDataValid({
       topValue: topPercent,
       bottomValue: bottomPercent,
