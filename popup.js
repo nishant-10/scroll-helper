@@ -166,10 +166,15 @@ saveTextButton.addEventListener("click", async () => {
     };
     await saveAndApplySettings(allExtensionSettings);
     saveTextWarning.style.display = "none";
+    saveTextButton.textContent = "Saved!";
+    setTimeout(() => {
+      saveTextButton.textContent = "Save";
+    }, 1500);
   } else {
     //warning UI
     saveTextWarning.style.display = "flex";
     saveTextWarning.textContent = validationError || "Something went wrong";
+    saveTextButton.textContent = "Save";
   }
 });
 
