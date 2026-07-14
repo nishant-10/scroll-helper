@@ -46,7 +46,7 @@ async function saveAndApplySettings(settings) {
 
 function getDefaultSettings() {
   return {
-    mode: "text",
+    mode: "default",
     top: 100,
     bottom: 100,
     hideButtons: false,
@@ -54,6 +54,13 @@ function getDefaultSettings() {
 }
 
 function isScrollInputDataValid({ topValue, bottomValue, mode }) {
+  if (mode === "default") {
+    return {
+      valid: true,
+      message: "",
+    };
+  }
+
   if (
     mode === "percent" &&
     (typeof topValue !== "number" ||
@@ -142,6 +149,12 @@ saveTextButton.addEventListener("click", async () => {
       inputsAreValid = false;
       validationError = inputValidation.message;
     }
+  } else if (selectedMode === "default") {
+    extensionSettings = {
+      mode: "default",
+      top: 100,
+      bottom: 100,
+    };
   } else {
     inputsAreValid = false;
   }
