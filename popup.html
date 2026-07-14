@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scroll Helper</title>
+
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Scroll Helper</h2>
+      <!-- enable/disable buttons -->
+      <div class="section hide-buttons-section">
+        <div class="toggle-row">
+          <div class="toggle-text">
+            <span class="toggle-title">Hide Floating Buttons</span>
+            <span class="toggle-description">
+              Hide the on-page ↑ and ↓ buttons.
+            </span>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" id="hideButtons" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="section-title">Scroll behavior</div>
+
+      <!-- Default -->
+      <div class="section">
+        <label class="section-header">
+          <div class="radio-group">
+            <input type="radio" name="scrollMode" value="default" />
+
+            <span>Default Scroll</span>
+          </div>
+
+          <span class="tooltip"
+            >ⓘ
+            <span class="tooltip-text">
+              Reset to the default scroll behavior (100% top and 100% bottom).
+            </span></span
+          >
+        </label>
+
+        <div class="section-content">
+          <p class="default-description">
+            This uses the built-in default scroll behavior: top to 100% and bottom to 100%.
+          </p>
+        </div>
+      </div>
+
+      <!-- Scroll To Text -->
+      <div class="section">
+        <label class="section-header">
+          <div class="radio-group">
+            <input type="radio" name="scrollMode" value="text" checked />
+
+            <span>Scroll To Text</span>
+          </div>
+
+          <span class="tooltip"
+            >ⓘ
+            <span class="tooltip-text">
+              Scrolls to the first element containing the entered text.
+            </span></span
+          >
+        </label>
+
+        <div class="section-content">
+          <label>Top Text</label>
+          <input id="topText" type="text" placeholder="e.g. Introduction" />
+
+          <label>Bottom Text</label>
+          <input id="bottomText" type="text" placeholder="e.g. Contact Us" />
+        </div>
+      </div>
+
+      <!-- Percentage -->
+
+      <div class="section">
+        <label class="section-header">
+          <div class="radio-group">
+            <input type="radio" name="scrollMode" value="percent" />
+
+            <span>Scroll To Percentage</span>
+          </div>
+
+          <span class="tooltip" title="Jump to a percentage of the page.">
+            ⓘ
+            <span class="tooltip-text">
+              Scrolls to the specified percentage of the page.
+            </span>
+          </span>
+        </label>
+
+        <div class="section-content">
+          <label>Top %</label>
+          <input
+            id="topPercent"
+            type="number"
+            min="0"
+            max="100"
+            placeholder="25"
+          />
+
+          <label>Bottom %</label>
+          <input
+            id="bottomPercent"
+            type="number"
+            min="0"
+            max="100"
+            placeholder="90"
+          />
+
+          <!-- <button id="savePercent">Save</button> -->
+        </div>
+      </div>
+      <button id="saveText">Save</button>
+      <span id="saveTextWarning"></span>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
