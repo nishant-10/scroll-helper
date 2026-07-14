@@ -52,17 +52,10 @@ function populateUI(settings) {
   updateSections();
 }
 
-function notifyActiveTab(settings) {
-  chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-    chrome.tabs.sendMessage(tab.id, {
-      action: "updateSettings",
-      settings,
-    });
-  });
-}
+// Writing to storage is enough: content.js applies it via chrome.storage.onChanged
+// (all open tabs) and via storage.get on load (future/reloaded tabs).
 async function saveAndApplySettings(settings) {
   await saveSettings(settings);
-  notifyActiveTab(settings);
 }
 
 function getDefaultSettings() {
