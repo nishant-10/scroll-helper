@@ -23,6 +23,14 @@ function saveSettings(settings) {
   return chrome.storage.local.set({ settings });
 }
 
+function loadSettings() {
+  return new Promise((resolve) => {
+    chrome.storage.local.get(["settings"], (data) => {
+      resolve(data.settings || getDefaultSettings());
+    });
+  });
+}
+
 function notifyActiveTab(settings) {
   chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
     chrome.tabs.sendMessage(tab.id, {
@@ -154,6 +162,14 @@ saveTextButton.addEventListener("click", async () => {
 
 radios.forEach((radio) => {
   radio.addEventListener("change", updateSections);
+});
+
+hideButtonsToggle.addEventListener("change", async () => {
+  const currentSettings = await loadSettings();
+  await saveAndApplySettings({
+    ...currentSettings,
+    hideButtons: hideButtonsToggle.checked,
+  });
 });
 
 document.querySelectorAll("input").forEach((input) => {

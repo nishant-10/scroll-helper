@@ -54,6 +54,19 @@ style.textContent = `
 
 shadow.appendChild(style);
 
+function setButtonsVisibility(hidden) {
+  top_button.style.visibility = hidden ? "hidden" : "visible";
+  bottom_button.style.visibility = hidden ? "hidden" : "visible";
+}
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "updateSettings" && message.settings) {
+    if (typeof message.settings.hideButtons === "boolean") {
+      setButtonsVisibility(message.settings.hideButtons);
+    }
+  }
+});
+
 // Default to the page itself
 let activeScroller = document.scrollingElement || document.documentElement;
 
