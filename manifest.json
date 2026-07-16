@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Scroll Helper",
-    "description": "A simple helper to quickly scroll to the top or bottom of any webpage. Works on all websites, including modern web apps.",
-    "version": "1.0.1",
+    "name": "Scroll Helper - Smart Scroll Buttons",
+    "description": "Floating scroll buttons for Chrome with support for scrolling to the top, bottom, specific text, and custom page percentages with a single clicks.",
+    "version": "1.0.2",
     "action": {
         "default_popup": "popup.html"
     },
