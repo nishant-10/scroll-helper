@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Scroll Helper - Smart Scroll Buttons",
-    "description": "Floating scroll buttons for Chrome with support for scrolling to the top, bottom, specific text, and custom page percentages with a single clicks.",
+    "description": "Floating scroll buttons with support for scrolling to the top, bottom, specific text, and custom percentages with a single click.",
     "version": "1.0.2",
     "action": {
         "default_popup": "popup.html"
