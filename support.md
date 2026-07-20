@@ -5,6 +5,11 @@ Welcome to **Scroll Helper**!
 Scroll Helper adds customizable floating scroll buttons to webpages, making it easy to navigate long pages with a single click.
 
 ---
+# Too bored to read? Completely understandable!
+
+## Scroll down the image for more detailed instructions
+
+![Scroll Helper Banner](images/main_banner.png)
 
 # Features
 
@@ -18,6 +23,10 @@ The default mode behaves like standard page navigation.
 Works on both traditional websites and modern web applications.
 
 ---
+
+## Disable Buttons
+
+Enable this option to instantly hide the scroll buttons, if it is blocking your view or overlapping other links or buttons.
 
 ## Scroll to Text
 
