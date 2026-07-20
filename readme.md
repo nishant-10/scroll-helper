@@ -1,6 +1,7 @@
 # Scroll Helper
-
 A lightweight Chrome extension that adds customizable floating scroll buttons to every webpage.
+
+![Scroll Helper Banner](images/main_banner.png)
 
 Scroll Helper makes navigating long pages faster by letting you:
 
@@ -8,6 +9,7 @@ Scroll Helper makes navigating long pages faster by letting you:
 - ⬇ Jump to the bottom
 - Scroll to specific text
 - Scroll to custom percentages
+- Disable the buttons when not in need
 
 It automatically detects the active scrollable area, making it work on both traditional websites and modern web applications.
 
