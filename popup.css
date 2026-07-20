@@ -292,3 +292,11 @@ button:active {
 
     opacity: 1;
 }
+
+.footerLinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
